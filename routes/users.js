@@ -95,6 +95,17 @@ router.route("/:id/posts")
 
 //GET /users/:id/comments
 router.route("/:id/comments")
+  //GET /user/:id/comments?postId=<value>
+  .get((req, res, next) => {
+    const userCommentPostId = req.query.postId
+    //find the user id to be equal to param.id
+    const user = users.find((u) => u.id == req.params.id);
+    //filter the comments with the user.id found
+    const userComments = comments.filter((c) => c.postId == userCommentPostId)
+    if (user) res.json(userComments);
+    else next();
+  })
+
   .get((req, res, next) => {
     //find the user id to be equal to param.id
     const user = users.find((u) => u.id == req.params.id);
@@ -103,5 +114,6 @@ router.route("/:id/comments")
     if (user) res.json(userComments);
     else next();
   })
+
 
 module.exports = router;

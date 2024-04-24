@@ -90,8 +90,20 @@ router
     else next();
   });
 
-  //GET /posts/:id/comments
+
 router.route("/:id/comments")
+  //GET /posts/:id/comments?userId=<value>
+  .get((req, res, next) => {
+    const postsCommentUserId = req.query.userId;
+    //find the post id to be equal to param.id
+    const post = posts.find((p) => p.id == req.params.id);
+    //filter the comments with the user.id found
+    const postComments = comments.filter((c) => c.userId == postsCommentUserId)
+    if (post) res.json(postComments);
+    else next();
+  })
+  
+  // /posts/:id/comments
   .get((req, res, next) => {
     //find the post id to be equal to param.id
     const post = posts.find((p) => p.id == req.params.id);
@@ -100,6 +112,8 @@ router.route("/:id/comments")
     if (post) res.json(postComments);
     else next();
   })
+
+
 
 
 module.exports = router;
