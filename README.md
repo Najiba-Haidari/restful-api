@@ -7,7 +7,7 @@
 <p align="center">
   <img src="./public/images/Image 4-24-24 at 10.28 AM (1).jpg" alt="screenshot" width="700" height="400" />
   <img src="./public/images/Image 4-24-24 at 10.28 AM.jpg" alt="screenshot" width="700" height="400" />
-  <img src="./public/images/Image 4-24-24 at 10.29 AM.jpg" alt="screenshot" width="500" height="400" />
+  <img src="./public/images/Image 4-24-24 at 10.29 AM.jpg" alt="screenshot" width="700" height="400" />
 </p>
 
 ## Table of Contents
