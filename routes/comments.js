@@ -31,7 +31,14 @@ router
     })
     //api/comments
     .get((req, res) => {
-        res.json(comments)
+        const links = [
+            {
+                href: "comments/:id",
+                rel: ":id",
+                type: "GET",
+            },
+        ];
+        res.json({ comments, links })
     })
     //api/comments
     .post((req, res, next) => {
@@ -56,8 +63,22 @@ router
     .get((req, res, next) => {
         const id = req.params.id
         const comment = comments.find((c) => c.id == id)
+
+        const links = [
+            {
+                href: `/${req.params.id}`,
+                rel: "",
+                type: "PATCH",
+            },
+            {
+                href: `/${req.params.id}`,
+                rel: "",
+                type: "DELETE",
+            },
+        ];
+
         if (comment) {
-            res.json(comment)
+            res.json({ comment, links })
         } else {
             next()
         }

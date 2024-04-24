@@ -17,7 +17,7 @@ router
     }
     else next();
   })
-
+  //api/posts
   .get((req, res) => {
     const links = [
       {
@@ -102,7 +102,7 @@ router.route("/:id/comments")
     if (post) res.json(postComments);
     else next();
   })
-  
+
   // /posts/:id/comments
   .get((req, res, next) => {
     //find the post id to be equal to param.id
